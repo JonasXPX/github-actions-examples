@@ -1,0 +1,43 @@
+name: 'Teste de workflow basico via shell'
+on:
+  schedule:
+    - cron: '0 8,12,18 * * *'
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'src/docs/**'
+    paths:
+      - 'src/**'
+      - '!src/docs/**'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'log level'
+        required: true
+        default: 'warning'
+jobs:
+  build:
+    env:
+      DEPLOY_ENV: production
+      DEPLOY_URL: http://localhost:5300
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo $DEPLOY_ENV environment
+      - name: Run a multi-line script
+        env:
+          URL_TOKEN: 11122
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  test:
+    name: Testar aplicação
+    needs: [ build ]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Testar
+        run: echo OK
+  

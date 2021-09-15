@@ -2,7 +2,6 @@ name: Docker workflow
 on:
   push:
     branches: [ main ]
-permissions: write-all
 jobs:
   build:
     services:
@@ -18,5 +17,5 @@ jobs:
     steps:
       - name: Teste build via serviços
         run: |
-          ls -lt /pgdata | exit 1
+          sudo ls -lt /pgdata | exit 1
           echo OK

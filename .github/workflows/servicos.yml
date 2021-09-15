@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Teste build via serviços
         run: |
-          ls -lt pgdata
+          ls -lt /pgdata | exit 1
           echo OK

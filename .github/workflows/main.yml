@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Teste build via serviços
-        run: echo ${{ job.services.postgres.ports }}
+        run: echo ${{ job.services.postgres.ports['5432'] }}

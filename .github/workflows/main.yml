@@ -1,0 +1,15 @@
+name: Docker workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432/tcp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Teste build via serviços
+        run: echo ${{ job.services.postgres }}

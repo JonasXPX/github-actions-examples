@@ -18,4 +18,5 @@ jobs:
       - name: Teste build via serviços
         run: |
           sudo ls -lt /pgdata
+          curl -v telnet://localhost:5432 | exit
           echo OK

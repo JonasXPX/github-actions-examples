@@ -7,10 +7,12 @@ jobs:
     services:
       postgres:
         image: postgres:11
+        env:
+          POSTGRES_PASSWORD: hackme
         ports:
           - 5432:5432
         volumes:
-          - pgdata:/var/lib/postgresql/data
+          - /pgdata:/var/lib/postgresql/data
     runs-on: ubuntu-latest
     steps:
       - name: Teste build via serviços
